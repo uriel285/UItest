@@ -1,0 +1,41 @@
+{
+  "name": "fotos",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1692.0",
+    "aws4": "^1.13.2",
+    "axios": "^1.7.8",
+    "b2-sdk": "^1.7.0",
+    "backblaze-b2-sdk": "^1.2.0",
+    "firebase": "^11.1.0",
+    "formidable": "^3.5.2",
+    "heroicons": "^2.2.0",
+    "multer": "^1.4.5-lts.1",
+    "next": "15.0.2",
+    "react": "19.0.0-rc-02c0e824-20241028",
+    "react-dom": "19.0.0-rc-02c0e824-20241028",
+    "react-file-drop": "^3.1.6",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/aws4": "^1.11.6",
+    "@types/formidable": "^3.4.5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/sqlite3": "^3.1.11",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.2",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

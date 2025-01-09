@@ -1,0 +1,9 @@
+-- Crear la tabla 'usuario'
+CREATE TABLE usuario (
+    username TEXT PRIMARY KEY,
+    password TEXT NOT NULL
+);
+
+-- Insertar los datos
+INSERT INTO usuario (username, password) VALUES ('AdminElQueBusca', 'Adm1nistr4ad@3LkBusca');
+
