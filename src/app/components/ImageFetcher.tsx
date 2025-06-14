@@ -1,7 +1,7 @@
-"use client"
+/* "use client"
 import React, { useEffect, useState } from 'react';
 
-const ImageFetcher = () => {
+const ImageFetcher = ({ path }) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -48,6 +48,53 @@ const ImageFetcher = () => {
   ) : (
     <p>No se pudo cargar la imagen.</p>
   );
+};
+
+export default ImageFetcher;
+ */
+"use client";
+import React, { useEffect, useState } from "react";
+
+interface ImageFetcherProps {
+  path: string; // Agregamos path como prop
+}
+
+const ImageFetcher: React.FC<ImageFetcherProps> = ({ path }) => {
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchImage = async () => {
+      try {
+        const response = await fetch(`/api/backblaze/getImage?path=${encodeURIComponent(path)}`);
+
+        if (!response.ok) {
+          throw new Error("No se pudo cargar la imagen desde el servidor.");
+        }
+
+        const imageBlob = await response.blob();
+        if (imageBlob.type.startsWith("image/")) {
+          const imageObjectUrl = URL.createObjectURL(imageBlob);
+          setImageUrl(imageObjectUrl);
+        } else {
+          throw new Error("La respuesta no es una imagen.");
+        }
+      } catch (err) {
+        console.error("Error al obtener la imagen:", err);
+        setError("No se pudo cargar la imagen.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchImage();
+  }, [path]); // Dependencia al path
+
+  if (loading) return <p>Cargando imagen...</p>;
+  if (error) return <p>{error}</p>;
+
+  return imageUrl ? <img src={imageUrl} alt="Imagen cargada" /> : <p>No se pudo cargar la imagen.</p>;
 };
 
 export default ImageFetcher;

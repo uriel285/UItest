@@ -4,8 +4,7 @@ const MyPage: React.FC = () => {
     return (
         <div>
             <h1>Imagen Cargada desde AWS</h1>
-            <ImageFetcher 
-            />
+            <ImageFetcher path={'DSC_0002.JPG'}            />
         </div>
     );
 };
