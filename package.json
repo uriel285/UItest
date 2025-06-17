@@ -23,8 +23,6 @@
     "react-dom": "19.0.0-rc-02c0e824-20241028",
     "react-file-drop": "^3.1.6",
     "react-icons": "^5.5.0",
-    "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@types/aws4": "^1.11.6",
@@ -32,7 +30,6 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@types/sqlite3": "^3.1.11",
     "eslint": "^8",
     "eslint-config-next": "15.0.2",
     "postcss": "^8",
