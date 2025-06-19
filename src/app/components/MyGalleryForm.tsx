@@ -1,14 +1,30 @@
-"use client"
+"use client";
 import { useState } from 'react';
 import { FileDrop } from "react-file-drop";
 
 const MyGalleryForm = () => {
+  const [location, setLocation] = useState('');
+  const [date, setDate] = useState('');
+  const [shift, setShift] = useState('');
+  const [files, setFiles] = useState<File[]>([]);
+
+  const handleDrop = (fileList: FileList | null) => {
+    if (fileList) {
+      const filesArray: File[] = Array.from(fileList);
+      setFiles(prevFiles => [...prevFiles, ...filesArray]);
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // No se realiza ninguna acción funcional.
+  };
 
   return (
     <div className="flex-1 p-6">
       <h1 className="text-3xl font-semibold text-black mb-6">Subir Galería</h1>
       <div className="bg-white p-6 rounded-lg shadow-lg">
-        <form >
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="location" className="block text-sm font-medium text-black mb-2">
               Ubicación
@@ -58,7 +74,7 @@ const MyGalleryForm = () => {
               Imágenes
             </label>
             <FileDrop
-              onDrop={handleDrop} // Aquí hemos corregido el tipo de la función
+              onDrop={handleDrop}
               className="border-2 border-dashed border-gray-300 p-6 text-center rounded-md cursor-pointer hover:bg-gray-50"
             >
               <p className="text-gray-500">Arrastra y suelta tus imágenes aquí, o haz clic para seleccionar</p>
@@ -66,7 +82,7 @@ const MyGalleryForm = () => {
             <div className="mt-4">
               {files.length > 0 && (
                 <div>
-                  <h3 className="font-semibold text-black b-2">Imágenes seleccionadas:</h3>
+                  <h3 className="font-semibold text-black mb-2">Imágenes seleccionadas:</h3>
                   <ul>
                     {files.map((file, index) => (
                       <li key={index} className="text-black">
