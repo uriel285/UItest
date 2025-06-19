@@ -3,63 +3,12 @@ import { useState } from 'react';
 import { FileDrop } from "react-file-drop";
 
 const MyGalleryForm = () => {
-  const [location, setLocation] = useState('');
-  const [date, setDate] = useState('');
-  const [shift, setShift] = useState('');
-  const [files, setFiles] = useState<File[]>([]);
-
-  const handleDrop = (fileList: FileList | null, event: DragEvent) => {
-    if (fileList) {
-      const filesArray: File[] = Array.from(fileList); // Convertir FileList a Array de File
-      setFiles(prevFiles => [...prevFiles, ...filesArray]);
-      console.log(filesArray); // Verifica los archivos recibidos
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!location || !date || !shift || files.length === 0) {
-      alert("Por favor, completa todos los campos.");
-      return;
-    }
-
-    try {
-      // Subir la imagen a Backblaze
-      const formData = new FormData();
-      files.forEach(file => formData.append("file", file)); // Agregar los archivos al FormData
-
-      const res = await fetch('/api/backblaze/upload', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await res.json();
-
-      if (res.status !== 200) {
-        throw new Error(data.error || 'Error al cargar la imagen');
-      }
-
-      const fileUrls = data.files; // URL del archivo en Backblaze
-      for (let i = 0; i < fileUrls.length; i++) {
-        const fileUrl = fileUrls[i];
-
-        // Crear el registro en Firebase
-        const fotoId = `${shift}-${date}-${location}-${new Date().getTime()}`; // Crear un ID único
-        await createFoto(fotoId, shift, date, location, fileUrl); // Llamar a la función que guarda en Firebase
-      }
-
-      alert('Galería subida exitosamente!');
-    } catch (error) {
-      console.error(error);
-      alert('Hubo un problema al subir la galería.');
-    }
-  };
 
   return (
     <div className="flex-1 p-6">
       <h1 className="text-3xl font-semibold text-black mb-6">Subir Galería</h1>
       <div className="bg-white p-6 rounded-lg shadow-lg">
-        <form onSubmit={handleSubmit}>
+        <form >
           <div className="mb-4">
             <label htmlFor="location" className="block text-sm font-medium text-black mb-2">
               Ubicación
