@@ -24,13 +24,13 @@ const [uploadComplete, setUploadComplete] = useState(false);
 
 const handleDrop = (files: FileList | null, event: DragEvent<HTMLDivElement>) => {
   if (files) {
-    // Convertir el FileList a un arreglo de tipo File[]
+    // Convertir FileList a un arreglo de tipo File[]
     setDroppedFiles(Array.from(files)); // Convertir FileList a File[]
     console.log("Archivos soltados:", files);
-  
+
     setIsUploading(true);
     setUploadComplete(false);
-  
+
     // Simular subida falsa de 20 segundos
     setTimeout(() => {
       setIsUploading(false);
@@ -38,6 +38,7 @@ const handleDrop = (files: FileList | null, event: DragEvent<HTMLDivElement>) =>
     }, 20000);
   }
 };
+
 
   const handleDelete = () => {
     if (selectedImages.size === 0) {
