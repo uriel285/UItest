@@ -24,6 +24,7 @@ const [uploadComplete, setUploadComplete] = useState(false);
 
 const handleDrop = (files: FileList | null, event: DragEvent<HTMLDivElement>) => {
   if (files) {
+    // Convertir el FileList a un arreglo de tipo File[]
     setDroppedFiles(Array.from(files)); // Convertir FileList a File[]
     console.log("Archivos soltados:", files);
   
