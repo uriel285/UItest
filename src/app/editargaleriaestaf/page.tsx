@@ -22,7 +22,7 @@ const [uploadComplete, setUploadComplete] = useState(false);
 
   const toggleDragArea = () => setIsDragAreaVisible((prev) => !prev);
 
-  const handleDrop = (files: File[]) => {
+  const handleDrop = (files: any) => {
     setDroppedFiles(files);
     console.log("Archivos soltados:", files);
   
