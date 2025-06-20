@@ -22,8 +22,9 @@ const [uploadComplete, setUploadComplete] = useState(false);
 
   const toggleDragArea = () => setIsDragAreaVisible((prev) => !prev);
 
-  const handleDrop = (files: any) => {
-    setDroppedFiles(files);
+const handleDrop = (files: FileList | null, event: DragEvent<HTMLDivElement>) => {
+  if (files) {
+    setDroppedFiles(Array.from(files)); // Convertir FileList a File[]
     console.log("Archivos soltados:", files);
   
     setIsUploading(true);
@@ -34,7 +35,8 @@ const [uploadComplete, setUploadComplete] = useState(false);
       setIsUploading(false);
       setUploadComplete(true);
     }, 20000);
-  };
+  }
+};
 
   const handleDelete = () => {
     if (selectedImages.size === 0) {
