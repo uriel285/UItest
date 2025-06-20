@@ -39,7 +39,6 @@ const handleDrop = (files: FileList | null, event: DragEvent<HTMLDivElement>) =>
   }
 };
 
-
   const handleDelete = () => {
     if (selectedImages.size === 0) {
       alert("No hay imágenes seleccionadas.");
