@@ -1,12 +1,21 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import instagram from "../../../public/icons/instagram.svg"
+import instagram from "../../../public/icons/instagram.svg";
 
 const PedidoExito = () => {
   const [copied, setCopied] = useState(false);
+  const [name, setName] = useState("");
+  
+  // Cargar nombre desde el localStorage cuando el componente se monta
+  useEffect(() => {
+    const storedName = localStorage.getItem("name");
+    if (storedName) {
+      setName(storedName);
+    }
+  }, []);
 
-  const pedidoTexto = "Hola, mi numero de pedido es: #00002 Uriel";
+  const pedidoTexto = `Hola, mi numero de pedido es: #00002 ${name}`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(pedidoTexto);
@@ -23,22 +32,21 @@ const PedidoExito = () => {
       <div className="bg-white p-4 rounded-lg shadow-md border flex items-center justify-between w-full max-w-lg">
         <p className="text-gray-800 text-lg">{pedidoTexto}</p>
         <button
-  onClick={handleCopy}
-  className="ml-4 text-gray-500 hover:text-green-600 transition"
-  aria-label="Copiar texto"
->
-  {copied ? "✔ Copiado" : "📋 Copiar"}
-</button>
-
+          onClick={handleCopy}
+          className="ml-4 text-gray-500 hover:text-green-600 transition"
+          aria-label="Copiar texto"
+        >
+          {copied ? "✔ Copiado" : "📋 Copiar"}
+        </button>
       </div>
       {copied && (
         <p className="mt-2 text-sm text-green-500">Texto copiado al portapapeles</p>
       )}
 
-<a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500">
-          <Image src={instagram} alt="instagram-icon" className="w-[4rem] mt-5 text-white"/>
-        </a>
-        <a href="https://instagram.com" className="text-xl text-black mt-5">https://instagram.com/elquebuscaencuentra.surf</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500">
+        <Image src={instagram} alt="instagram-icon" className="w-[4rem] mt-5 text-white"/>
+      </a>
+      <a href="https://instagram.com" className="text-xl text-black mt-5">https://instagram.com/elquebuscaencuentra.surf</a>
     </div>
   );
 };

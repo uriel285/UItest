@@ -10,7 +10,7 @@ const Galerias = () => {
         <div className="grid grid-cols-3">
 
             <div className="bg-white shadow-lg text-gray-950 rounded-xl m-5">
-                <a href="/galeria">
+                <a href="/galeriahotel5">
                 <Image src={image} alt="imagen" className='w-[100%] h-auto rounded-t-xl mx-auto'/>
                 <div className="text-center">
                     <p className="text-xl">Hotel 5, 15/02/2024, Mañana</p>
@@ -19,7 +19,7 @@ const Galerias = () => {
             </div>
 
             <div className="bg-white shadow-lg text-gray-950 rounded-xl m-5">
-            <Link href={`/galeria/Estafeta/16-02-2024/fin-de-tarde`}>
+            <Link href={`/galeriaestafeta16-02-2024fin-de-tarde`}>
 
                 <Image src={image2} alt="imagen" className="w-[100%] h-auto rounded-t-xl mx-auto" />
                 <div className="text-center">

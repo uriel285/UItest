@@ -31,9 +31,9 @@ const MyGalleryForm = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex flex-col lg:flex-row h-screen bg-gray-100">
       {/* Barra lateral */}
-      <div className="w-64 bg-indigo-700 text-white p-6">
+      <div className="lg:w-64 w-full bg-indigo-700 text-white p-6 lg:absolute lg:top-0 lg:left-0 lg:h-full lg:bottom-auto bottom-0 lg:relative">
         <h2 className="text-3xl font-semibold text-center mb-8">Panel de Administración</h2>
         <ul>
           <li

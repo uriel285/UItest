@@ -22,9 +22,9 @@ const EditGalleryPage = () => {
   ];
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex flex-col lg:flex-row h-screen bg-gray-100">
       {/* Barra lateral */}
-      <div className="w-64 bg-indigo-700 text-white p-6">
+      <div className="w-full lg:w-64 bg-indigo-700 text-white p-6 lg:h-full flex-shrink-0 lg:sticky lg:top-0">
         <h2 className="text-3xl font-semibold text-center mb-8">Panel de Administración</h2>
         <ul>
           <li
@@ -64,7 +64,7 @@ const EditGalleryPage = () => {
                   }`}
                   onClick={() => setSelectedGallery(item.id)}
                 >
-                  <a href={item.url} >
+                  <a href={item.url}>
                     <div className="text-center p-2">
                       <p className="text-xl text-white">{item.description}</p>
                     </div>
@@ -74,6 +74,29 @@ const EditGalleryPage = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Barra lateral en pantallas pequeñas (footer) */}
+      <div className="lg:hidden w-full bg-indigo-700 text-white p-4 flex justify-between">
+        <ul className="flex w-full justify-around">
+          <li
+            className="py-2 px-4 cursor-pointer hover:bg-indigo-600"
+            onClick={() => (window.location.href = "/panel")}
+          >
+            Subir Galería
+          </li>
+          <li
+            className="py-2 px-4 bg-indigo-600 cursor-pointer"
+          >
+            Editar Galería
+          </li>
+          <li
+            className="py-2 px-4 cursor-pointer hover:bg-indigo-600"
+            onClick={() => (window.location.href = "/pedidos")}
+          >
+            Pedidos
+          </li>
+        </ul>
       </div>
     </div>
   );
