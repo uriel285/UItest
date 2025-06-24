@@ -24,16 +24,21 @@ const Carousel = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextImage, 5000); // Cambia la imagen cada 1.5 segundos
+    const interval = setInterval(nextImage, 5000); // Cambia la imagen cada 5 segundos
     return () => clearInterval(interval); // Limpia el intervalo al desmontar el componente
   }, []);
 
   return (
-    <div className="carousel">
-        <div className={`image-container ${isTransitioning ? 'fade-out' : 'fade-in'}`}>
-        <Image src={images[currentIndex]} alt={`Image ${currentIndex + 1}`} className='w-[100vw] h-auto'/>
-        </div>
-
+    <div className="relative w-full h-[40vh] sm:h-[60vh]"> {/* Ajustar la altura */}
+      <div className={`absolute inset-0 transition-opacity duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+        <Image 
+          src={images[currentIndex]} 
+          alt={`Image ${currentIndex + 1}`} 
+          layout="fill" 
+          objectFit="cover" 
+          className="w-full h-full"
+        />
+      </div>
     </div>
   );
 };

@@ -37,25 +37,25 @@ const PhotoGallery = () => {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
         <div className="relative rounded-lg overflow-hidden shadow-md">
-          <Image src={img1} alt="Foto 1" className="w-full h-full object-cover" />
+          <Image src={img1} alt="Foto 1" className="w-full h-full object-cover" loading="lazy" placeholder="blur"/>
           <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-white opacity-80">
               ElQueBuscaEncuentra
             </p>
         </div>
         <div className="relative rounded-lg overflow-hidden shadow-md">
-          <Image src={img2} alt="Foto 2" className="w-full h-full object-cover" />
+          <Image src={img2} alt="Foto 2" className="w-full h-full object-cover" loading="lazy" placeholder="blur" />
           <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-white opacity-80">
               ElQueBuscaEncuentra
             </p>
         </div>
         <div className="relative rounded-lg overflow-hidden shadow-md">
-          <Image src={img3} alt="Foto 3" className="w-full h-full object-cover" />
+          <Image src={img3} alt="Foto 3" className="w-full h-full object-cover" loading="lazy" placeholder="blur" />
           <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-white opacity-80">
               ElQueBuscaEncuentra
             </p>
         </div>
         <div className="relative rounded-lg overflow-hidden shadow-md">
-          <Image src={img4} alt="Foto 4" className="w-full h-full object-cover" />
+          <Image src={img4} alt="Foto 4" className="w-full h-full object-cover" loading="lazy" placeholder="blur" />
           <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-white opacity-80">
               ElQueBuscaEncuentra
             </p>
